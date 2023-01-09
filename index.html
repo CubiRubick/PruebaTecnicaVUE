@@ -94,51 +94,51 @@
         <v-card>
           <v-card-title class="blue-grey darken-1 white--text">Nuevo Usuario</v-card-title>
           <v-card-text>
-            <v-form>
+            <v-form ref="form" v-model="valid"  lazy-validation>
               <v-container>
                 <v-row>
                   <input v-model="articulo.id" hidden></input>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.estatus" label="estatus" solo required>{{articulo.estatus}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.estatus" label="estatus" :rules="generalRules" :counter="20" solo required>{{articulo.estatus}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.nombre" label="nombre" solo required>{{articulo.nombre}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.nombre" :rules="nameRules" maxlength="90" minlength="3" :counter="90" label="nombre" solo required>{{articulo.nombre}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.sexo" label="sexo" solo required>{{articulo.sexo}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.sexo" maxlength="1" label="sexo" :rules="generalRules" solo required>{{articulo.sexo}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.fechanacimiento" label="fechan de nacimiento" type="date" solo required>{{articulo.fechanacimiento}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.fechanacimiento" label="fechan de nacimiento" :rules="generalRules" type="date" solo required>{{articulo.fechanacimiento}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.edad" id="edades" label="edad" type="text" solo required>{{articulo.edad}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.edad" id="edades" label="edad" :rules="generalRules" type="text" solo required>{{articulo.edad}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.telefono" label="telefono" maxlength="10" solo required>{{articulo.telefono}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.telefono" label="telefono" :rules="telefonoRules" maxlength="10" :counter="10" solo required>{{articulo.telefono}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.correo" label="correo" solo required>{{articulo.correo}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.correo" label="correo" :rules="generalRules" :counter="50" solo required>{{articulo.correo}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.puesto" label="puesto" solo required>{{articulo.puesto}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.puesto" label="puesto" :rules="generalRules" :counter="90" solo required>{{articulo.puesto}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.departamento" label="departamento" solo required>{{articulo.departamento}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.departamento" label="departamento" :rules="generalRules" :counter="90" solo required>{{articulo.departamento}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.turno" label="turno" solo required>{{articulo.turno}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.turno" label="turno" :rules="generalRules" :counter="90" solo required>{{articulo.turno}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.rfc" label="rfc" maxlength="13" minlength="13" solo required>{{articulo.rfc}}</v-text-field>
+                  <v-col cols="12" sm="10">
+                    <v-text-field v-model="articulo.rfc" label="rfc" maxlength="13" minlength="13" :counter="13" solo required>{{articulo.rfc}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.colonia" label="colonia" solo required>{{articulo.colonia}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.colonia"  label="colonia" :rules="generalRules" :counter="90" solo required>{{articulo.colonia}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.calle" label="calle" solo required>{{articulo.calle}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.calle" label="calle" :rules="generalRules" :counter="90" solo required>{{articulo.calle}}</v-text-field>
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field v-model="articulo.cp" label="cp" maxlength="5" solo required>{{articulo.cp}}</v-text-field>
+                  <v-col cols="12" md="10">
+                    <v-text-field v-model="articulo.cp" label="cp" :rules="cpRules" :counter="5" maxlength="5" minlength="5" solo required>{{articulo.cp}}</v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
@@ -163,17 +163,31 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.2/dist/sweetalert2.all.min.js"></script>
 
   <script>
-  
   var url = "http://localhost/pruebacrud/crud.php";
     new Vue({
       el: '#app',
       vuetify: new Vuetify(),
        data () {
         return {
+          valid: true,
             articulos: [],
             articulos2: [],
             dialog: false,
             operacion: '',
+            estatus: '',
+            nombre: '',
+            sexo: '',
+            fechanacimiento: '',
+            edad: '',
+            telefono: '',
+            correo: '',
+            puesto: '',
+            departamento: '',
+            turno: '',
+            rfc: '',
+            colonia: '',
+            calle: '',
+            cp: '',
             articulo:{
                 id: null,
 
@@ -181,14 +195,51 @@
             articulo2:{
                 id: null,
 
-            }
-        }
+            },
+            nameRules: [
+              v => !!v || 'Nombre es requerido',
+              v => v.length <= 90 || 'no pasar los caracteres',
+              v => v.length > 2 || 'nombre no menor de 3 caracteres',
+            ],
+            telefonoRules: [
+              v => !!v || 'Telefono es requerido',
+              v => v.length <= 10 || 'telefono incorrecto',
+              v => v.length > 9 || 'telefono incorrecto',
+            ],
+            cpRules: [
+              v => !!v || 'Codigo Postal es requerido',
+              v => v.length <= 5 || 'Codigo Postal incorrecto',
+              v => v.length > 4 || 'Codigo Postal incorrecto',
+            ],
+            generalRules: [
+            v => !!v || 'Campos son requeridos',
+            ],
+          }
        },
        created(){
             this.mostrar()
 
        },
        methods:{
+            resetValidation:function() {
+              this.$refs.form.resetValidation();
+            },
+            resetform:function() {
+                this.articulo.estatus='';
+                this.articulo.nombre='';
+                this.articulo.sexo='';
+                this.articulo.fechanacimiento='';
+                this.articulo.edad='';
+                this.articulo.telefono='';
+                this.articulo.correo='';
+                this.articulo.puesto='';
+                this.articulo.departamento='';
+                this.articulo.turno='';
+                this.articulo.rfc ='';
+                this.articulo.colonia ='';
+                this.articulo.calle ='';
+                this.articulo.cp ='';
+            },
             mostrar:function(){
               axios.post(url,{opcion:1})
               .then(response =>{
@@ -212,21 +263,11 @@
                 axios.post(url, {opcion:2, estatus:this.articulo.estatus, nombre:this.articulo.nombre, sexo:this.articulo.sexo, fechanacimiento:this.articulo.fechanacimiento, edad:edades, telefono:this.articulo.telefono, correo:this.articulo.correo, puesto:this.articulo.puesto, departamento:this.articulo.departamento, turno:this.articulo.turno, RFC:this.articulo.rfc, colonia:this.articulo.colonia, calle:this.articulo.calle, cp:this.articulo.cp })
                 .then(response =>{
                   this.mostrar();
+                  this.resetform();
+                  this.resetValidation();
                 });
-                this.articulo.estatus='';
-                this.articulo.nombre='';
-                this.articulo.sexo='';
-                this.articulo.fechanacimiento='';
-                this.articulo.edad='';
-                this.articulo.telefono='';
-                this.articulo.correo='';
-                this.articulo.puesto='';
-                this.articulo.departamento='';
-                this.articulo.turno='';
-                this.articulo.rfc ='';
-                this.articulo.colonia ='';
-                this.articulo.calle ='';
-                this.articulo.cp ='';
+
+
             },
             editar:function(id, estatus, nombre, sexo, fechanacimiento, edad, telefono, correo, puesto, departamento, turno, rfc, colonia, calle, cp){
               axios.post(url, {opcion:3, id:this.articulo.id, estatus:this.articulo.estatus, nombre:this.articulo.nombre, sexo:this.articulo.sexo, fechanacimiento:this.articulo.fechanacimiento, edad:this.articulo.edad, telefono:this.articulo.telefono, correo:this.articulo.correo, puesto:this.articulo.puesto, departamento:this.articulo.departamento, turno:this.articulo.turno, rfc:this.articulo.rfc, colonia:this.articulo.colonia, calle:this.articulo.calle, cp:this.articulo.cp})
@@ -255,35 +296,30 @@
                 this.articulos2 = response.data;
               })
             },
-
             //Botones y formularios
             guardar:function(){
               if(this.operacion=='crear'){
-                this.crear();
+                const valid = this.$refs.form.validate();
+                if (valid){
+                  this.crear();
+                }else{
+                  alert("Error en algun campos")
+                }
               }
               if(this.operacion=='editar'){
-                this.editar();
+                const valid = this.$refs.form.validate();
+                if (valid){
+                  this.editar();
+                }else{
+                  alert("Error en algun campos")
+                }
               }
               this.dialog=false;
             },
-            
             formNuevo:function () {
               this.dialog=true;
               this.operacion='crear';
-              this.articulo.estatus='';
-              this.articulo.nombre='';
-              this.articulo.sexo='';
-              this.articulo.fechanacimiento='';
-              this.articulo.edad='';
-              this.articulo.telefono='';
-              this.articulo.correo='';
-              this.articulo.puesto='';
-              this.articulo.departamento='';
-              this.articulo.turno='';
-              this.articulo.rfc ='';
-              this.articulo.colonia ='';
-              this.articulo.calle ='';
-              this.articulo.cp ='';
+              this.resetform();
             },
             formEditar:function(id, estatus, nombre, sexo, fechanacimiento, edad, telefono, correo, puesto, departamento, turno, rfc, colonia, calle, cp){
               //capturamos los datos del registro seleccionado y los mostramos en el formulario
@@ -307,8 +343,6 @@
             }
        }
     });
-  </script>
-  <script type="text/javascript">
   </script>
 </body>
 </html> 
