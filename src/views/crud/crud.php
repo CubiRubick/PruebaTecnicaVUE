@@ -34,9 +34,9 @@ $correo = (isset($_POST['correo'])) ? $_POST['correo'] : '';
 $puesto = (isset($_POST['puesto'])) ? $_POST['puesto'] : '';
 $departamento = (isset($_POST['departamento'])) ? $_POST['departamento'] : '';
 $turno = (isset($_POST['turno'])) ? $_POST['turno'] : '';
-$rfc = (isset($_POST['rfc'])) ? $_POST['rfc'] : ''; 
-$colonia = (isset($_POST['colonia'])) ? $_POST['colonia'] : ''; 
-$calle = (isset($_POST['calle'])) ? $_POST['calle'] : ''; 
+$rfc = (isset($_POST['rfc'])) ? $_POST['rfc'] : '';
+$colonia = (isset($_POST['colonia'])) ? $_POST['colonia'] : '';
+$calle = (isset($_POST['calle'])) ? $_POST['calle'] : '';
 $cp = (isset($_POST['cp'])) ? $_POST['cp'] : '';
 
 
@@ -65,9 +65,16 @@ switch($opcion){
         $consulta = "UPDATE datosgenerales SET estatus='$estatus', nombre='$nombre', sexo='$sexo', fechanacimiento='$fechanacimiento', edad='$edad', telefono='$telefono', correo='$correo', puesto='$puesto', departamento='$departamento', turno='$turno', rfc='$rfc', colonia='$colonia', calle='$calle', cp='$cp', activo=1 WHERE id='$id' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-        $consulta2 = "INSERT INTO historial (puesto, departamento, turno, idusuariofk) VALUES('$puesto', '$departamento', '$turno', '$id')";
-        $resultado2 = $conexion->prepare($consulta2);
-        $resultado2->execute();
+        $validdata = "SELECT * FROM historial WHERE puesto='$puesto' AND departamento = '$departamento' AND turno = '$turno' AND idusuariofk = '$id' ";
+        $validation = $conexion-> prepare($validdata);
+        $validation->execute();
+        if($row = $validation->fetch(PDO::FETCH_ASSOC)){
+
+        }else{
+            $consulta2 = "INSERT INTO historial (puesto, departamento, turno, idusuariofk) VALUES('$puesto', '$departamento', '$turno', '$id')";
+            $resultado2 = $conexion->prepare($consulta2);
+            $resultado2->execute();
+        }
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 4:
